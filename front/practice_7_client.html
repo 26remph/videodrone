@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Drone management</title>
+</head>
+<body>
+  <h1>DRone T-1000</h1>>
+  <button onclick="sendCommand('takeoff')"> Takeoff</button>
+  <button onclick="sendCommand('land')">Land</button>
+  <p id="droneStatus">Drone status</p>
+  <div id="status" style="border: 1px solid #ccc; padding: 10px; width: 300px; height: 200px; overflow-y: scroll">
+	  <p>Message from drone:</p>
+  </div>
+  
+	<script>
+			const socket = new WebSocket("ws://localhost:8765")
+			function sendCommand(command) {
+					socket.send(command)
+					console.log("Command send:", command)
+			}
+			function updateStatus(status) {
+					const divSatus = document.getElementById("status")
+					const newStatus = document.createElement("p")
+					newStatus.textContent = status
+					divSatus.appendChild(newStatus)
+					divSatus.scrollTop = divSatus.scrollHeight
+					
+					const pStatus = document.createElement('droneStatus')
+					pStatus.textContent = 'Drone Status: ' + status
+			}
+			socket.onopen = () => {
+					console.log("Connected")
+			}
+
+			socket.onmessage = (event) => {
+					console.log('Server message', event.data)
+					updateStatus(event.data)
+			}
+
+	</script>
+</body>
+</html>
