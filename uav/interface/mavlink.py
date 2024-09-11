@@ -34,11 +34,11 @@ class MavLinkIDrone(IDrone):
             )
             if response is not None:
                 payload = response[0]
-                log.info('Image getting done: %s', payload)
+                log.info("Image getting done: %s", payload)
                 return payload
             else:
                 log.info("Waiting camera....")
 
             time.sleep(delay)
 
-        log.error('Failed to get image')
+        log.error("Failed to get image")

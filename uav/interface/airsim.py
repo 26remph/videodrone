@@ -13,22 +13,18 @@ class AirsimIDrone(IDrone):
 
     def get_image(self):
         response = self.client.simGetImage([
-            airsim.ImageRequest(
-                "0",
-                airsim.ImageType.Scene,
-                False,
-                False)
+            airsim.ImageRequest("0", airsim.ImageType.Scene, False, False)
         ])
 
-        log.info('Image response: %s', response)
+        log.info("Image response: %s", response)
 
         if response:
             payload = response[0]
-            log.info('Image getting done: %s', payload)
+            log.info("Image getting done: %s", payload)
             return {
-                'img': payload.image_data_uint8,
-                'height': payload.height,
-                'width': payload.width,
+                "img": payload.image_data_uint8,
+                "height": payload.height,
+                "width": payload.width,
             }
 
-        log.error('Failed to get image')
+        log.error("Failed to get image")

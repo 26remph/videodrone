@@ -7,9 +7,9 @@ from interface.virtual import VirtualIDrone
 
 
 class DroneClientType(str, Enum):
-    mavlink = 'mavlink'
-    airsim = 'airsim'
-    virtual = 'virtual'
+    mavlink = "mavlink"
+    airsim = "airsim"
+    virtual = "virtual"
 
 
 class DroneClientFactory:
@@ -24,7 +24,7 @@ class DroneClientFactory:
     def get_action(self, client) -> IDrone:
         action = self.creators.get(client)
         if action is None:
-            raise KeyError('No action registered for client %s', client)
+            raise KeyError("No action registered for client %s", client)
         return action()
 
 

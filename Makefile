@@ -19,14 +19,14 @@ help: ##@Help Show this help
 	@perl -e '$(HELP_FUN)' $(MAKEFILE_LIST)
 
 lint:  ##@Code Check and fix code with ruff settings
-	poetry run python3 -m ruff check --fix
+	python3 -m ruff check --fix
 
 format:  ##@Code Reformat code with ruff settings
-	poetry run python3 -m ruff format
+	run python3 -m ruff format
 
 ruff:  ##@Code Reformat and lint code with ruff settings
-	poetry run python3 -m ruff check --fix
-	poetry run python3 -m ruff format
+	python3 -m ruff check --fix
+	python3 -m ruff format
 
 %::
 	echo $(MESSAGE)
