@@ -1,7 +1,9 @@
 # ffplay udp://127.0.0.1:1234
 
-import cv2
 import subprocess
+
+import cv2
+
 
 capture = cv2.VideoCapture(0)
 
@@ -34,6 +36,7 @@ while True:
     if not ret:
         break
     ffmpeg.stdin.write(frame.tobytes())
+
 
 capture.release()
 ffmpeg.stdin.flush()
