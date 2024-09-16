@@ -28,7 +28,7 @@ def detect():
     detector = ObjectDetection()
     detector.detect_objects(image_name="snapshot.jpeg")
 
-    filename = "detect.jpeg"
+    filename = "detect_moh.jpeg"
     return send_file(filename, mimetype="image/jpeg")
 
 

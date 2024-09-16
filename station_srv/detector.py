@@ -36,7 +36,7 @@ class ObjectDetection:
                 img, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1
             )
 
-        cv2.imwrite("detect.jpeg", img)
+        cv2.imwrite("detect_moh.jpeg", img)
         cv2.destroyAllWindows()
 
 
